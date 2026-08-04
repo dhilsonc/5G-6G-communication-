@@ -1,0 +1,24 @@
+clc;
+clear;
+close all;
+
+% Parameters
+BW = 200;          % Channel Bandwidth (kHz)
+Users = 3;         % Number of users
+M = 2;             % BPSK Modulation (2 symbols)
+
+% Calculate Data Rate
+DataRate = BW * log2(M);   % Data Rate per user (kbps)
+Rate = DataRate * ones(1, Users);
+
+% Display Results
+disp('User Data Rate (kbps)');
+disp(table((1:Users)', Rate', 'VariableNames', {'User', 'DataRate_kbps'}));
+
+% Plot
+figure;
+bar(1:Users, Rate);
+xlabel('Users');
+ylabel('Data Rate (kbps)');
+title('FDMA Data Rate for Each User');
+grid on;
